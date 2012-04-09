@@ -9,6 +9,7 @@ This will give you an orientation to the dizzying array of
 tools and technologies available, and get you ready to create your first
 web application using the best modern practices.
 
+[So... let's get started!](http://mstratman.github.com/perl-web-development/)
 
 Contributing
 ============

@@ -1,6 +1,8 @@
 Perl Web Development From Outer Space
 =====================================
 
+http://mstratman.github.com/perl-web-development/
+
 This is a beginners guide to creating dynamic web applications in Perl.
 
 This will give you an orientation to the dizzying array of

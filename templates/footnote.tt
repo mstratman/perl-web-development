@@ -1,0 +1,22 @@
+[%-
+  SET fn_data = {};
+  SET fn_data.footnote_html = [];
+-%]
+[%- MACRO footnote(message) BLOCK -%]
+  [%-
+    SET fn_num = fn_data.footnote_html.size + 1;
+    fn_data.footnote_html.push(message);
+  -%]
+<sup class="footnote"><a href="#footnote_[% fn_num %]" id="footnote_ref_[% fn_num %]" title="See footnote [% fn_num %]">[% fn_num %]</a></sup>
+[%- END -%]
+[%- BLOCK footnote_output -%]
+  [% FOREACH fn IN fn_data.footnote_html %]
+    <div class="alert alert-info">
+      <p>
+        <span class="badge badge-info" id="footnote_[% loop.count %]">[% loop.count %]</span>
+        <a href="#footnote_ref_[% loop.count %]"><i class="icon-arrow-up"></i></a>
+        [% fn %]
+      </p>
+    </div>
+  [% END %]
+[% END %]

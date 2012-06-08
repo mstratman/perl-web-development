@@ -1,0 +1,85 @@
+@media (min-width: 980px) {
+    body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+    }
+}
+@media (min-width: 1200px) {
+    body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+    }
+}
+
+h1 {
+    text-align:center;
+    text-shadow: 0px 1px 0px #fff;
+}
+.hero-unit h1 { text-align:left; text-shadow: 0 0 0 #000; }
+h3 i.icon, h2 i.icon, h1 i.icon { vertical-align:middle; }
+h3 small {
+    font-size: 16px;
+}
+h3 small, h2 small, h1 small {
+    margin-left:5px;
+    color: #737373;
+}
+
+.help_link { cursor: help; }
+a.help_link {
+    text-decoration:none;
+    border-bottom:1px dashed green;
+}
+.help_destination { display:none; }
+
+.sidebar-nav { padding: 9px 0; }
+
+#forkme_banner {
+    display: block;
+    /*
+    position: absolute;
+    top:0;
+    right: 10px;
+    z-index: 10;
+    */
+    padding: 3px 50px 3px 10px;
+    color: #fff;
+    background: url('../img/blacktocat.png') #414141 no-repeat 95% 50%;
+    font-weight: 700;
+    box-shadow: 0 0 10px rgba(0,0,0,.5);
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.hero-unit { padding: 35px 20px 35px 20px; }
+
+.footnote,.footnote a, .footnote a:hover, .footnote a:active { color:red; }
+
+div.footnotes {
+    margin-left:100px;
+    border-top:1px dashed #eeeeee;
+}
+
+div.diagram {
+    float:left;
+}
+div.diagram a.thumbnail {
+    padding:7px;
+}
+
+.diagram .caption {
+    padding-left:6px;
+    padding-right:6px;
+}
+.diagram li {
+    margin-bottom:0px;
+}
+
+form p {
+    font-weight:bold;
+}
+form label.sub {
+    margin-left:45px;
+}
+
+.TODO { background-color:red; }

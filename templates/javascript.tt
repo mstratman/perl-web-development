@@ -1,0 +1,65 @@
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.fancybox.min.js"></script>
+<script src="js/jquery.smooth-scroll.min.js"></script>
+<script src="js/jquery.ba-bbq.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        //$('#navbar').scrollspy(); // TODO: it seems the bootstrap stuff already calls this?
+        $('.dropdown-toggle').dropdown();
+
+        $('a.thumbnail').fancybox({
+            'transitionIn'  : 'elastic',
+            'transitionOut' : 'elastic',
+            'speedIn'     : 250,
+            'speedOut'    : 150
+        });
+
+        /* Add "share" icons after each heading (if the heading has an
+         * id), so people can easily link to a particular section.
+         */
+        var appendShareLink = function() {
+            var id = $(this).attr('id');
+            $(this).append(' <a href="#' + id + '" title="Link to this section"><i class="icon icon-share"></i></a>');
+        };
+        $('h1[id]').each(appendShareLink);
+        $('h2[id]').each(appendShareLink);
+        $('h3[id]').each(appendShareLink);
+
+        /* Animate scrolling to local links.
+         * But NOT if the link is '#' since that's handled as a
+         * drop-down menu.
+         * Also NOT if it has a "help_link" class, since those are
+         * handled differently below.
+         */
+        $(document).on('click', 'a[href^="#"][href!="#"]:not(.help_link)', function() {
+            if (this.hash) {
+                $.bbq.pushState('#/' + this.hash.slice(1));
+                return false;
+            }
+        });
+        $(window).on('hashchange', function(event) {
+            if (! location.hash) {
+                return;
+            }
+            var target = '#' + location.hash.replace(/^#\/?/, '');
+            if ($(target).size()) {
+                $.smoothScroll({
+                    scrollTarget: target,
+                    offset: -40 // offset because of the floating page header
+                });
+            }
+        });
+        /* If the page was initially loaded with a hash target,
+         * we need to force scrolling to it.
+         */
+        $(window).trigger('hashchange');
+
+
+        $('a.help_link').click(function() {
+            var selector = $(this).attr('href');
+            $(selector).show(200);
+            return false;
+        });
+    });
+</script>

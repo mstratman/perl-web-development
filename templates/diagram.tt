@@ -1,0 +1,50 @@
+[%-# Accepts the following options:
+   #    src
+   #    caption
+   #    subcaption
+   #    subcaption_label (hash with 'type' (any twitter bootstrap label type),
+   #                      icon (optional, any twitter bootstrap icon class),
+   #                      and 'text')
+   #    span_size (default 3)
+   #    alt (defaults to caption)
+-%]
+[%-
+  SET dia_data = {};
+  SET dia_data.diagrams = [];
+-%]
+[%- MACRO diagram(options) BLOCK -%]
+  [%-
+    dia_data.diagrams.push(options);
+    SET dia_num = dia_data.diagrams.size;
+    SET caption_id = "figure_" _ dia_num;
+
+    # If possible, try to future-proof the id so that
+    # links stay static even if we insert new diagrams.
+    IF (matches = options.src.match('img/diagrams/([^\.]+).png'));
+      SET caption_id = "figure_" _ matches.0;
+    END;
+  -%]
+  <div class="diagram">
+    <ul class="thumbnails">
+      <li class="span[% options.span_size || 3 %]">
+        <a class="thumbnail" href="[% options.src %]" title="[% options.alt || options.caption %]"><img src="[% options.src %]" alt="[% options.alt || options.caption %]" ></a>
+      </li>
+    </ul>
+    [% IF options.caption %]
+      <div class="caption" id="[% caption_id %]">
+        <h5>Figure [% dia_num %]) [% options.caption %]</h5>
+        [% IF options.subcaption || options.subcaption_label %]
+          <p>
+            [% IF options.subcaption_label %]
+              <span class="label[% IF options.subcaption_label.type %] label-[% options.subcaption_label.type %][% END %]">
+                [% IF options.subcaption_label.icon %]<i class="icon-white icon-[% options.subcaption_label.icon %]"></i>[% END %]
+                [% options.subcaption_label.text %]
+              </span>
+            [% END %]
+            [% options.subcaption %]
+          </p>
+        [% END %]
+      </div>
+    [% END %]
+  </div>
+[% END %]

@@ -1,0 +1,73 @@
+<p>TODO: Put a chooser into here...</p>
+<form class="well">
+  <p>Do you have a web hosting account that lets you run Perl?</p>
+  <label class="radio">
+    <input type="radio" name="have_hosting" value="no">
+    No
+  </label>
+    <label class="radio sub">
+      <input type="radio" name="hosting" value="local">
+      <em>Don't need</em> - Nobody but me will use my web application
+      and it does not need to be available on the internet.
+    </label>
+    <label class="radio sub">
+      <input type="radio" name="hosting" value="20_minus">
+      <em>Tiny budget</em> - I want to spend as little money as possible and accept the limitations it puts me under.
+    </label>
+    <label class="radio sub">
+      <input type="radio" name="hosting" value="20_plus">
+      <em>Flexible budget</em> - I am willing to spend $20(USD)/month or more to get the most flexibility.
+    </label>
+
+
+  <label class="radio">
+    <input type="radio" name="have_hosting" value="yes">
+    Yes
+  </label>
+    <label class="radio sub">
+      <input type="radio" name="hosting" value="shared">
+      <em>shared hosting plan</em>
+    </label>
+    <label class="radio sub">
+      <input type="radio" name="hosting" value="server">
+      <em>my own server, or VPS</em>
+    </label>
+
+  <p>How comfortable are you with Perl?</p>
+  <label class="radio">
+    <input type="radio" name="perl" value="0">
+    <em>Beginner</em> - I have rarely (or never) written software before.
+  </label>
+  <label class="radio">
+    <input type="radio" name="perl" value="1">
+    <em>Intermediate</em> - I have written quite a bit of software, but not in Perl.
+  </label>
+  <label class="radio">
+    <input type="radio" name="perl" value="2">
+    <em>Intermediate</em> - I write Perl from time to time.
+  </label>
+  <label class="radio">
+    <input type="radio" name="perl" value="3">
+    <em>Experienced</em> - I have been working with Perl for several years, and can navigate perldocs with ease.
+  </label>
+
+  <p>Have you written web applications before?</p>
+  <label class="radio">
+    <input type="radio" name="webdev" value="0">
+    <em>Beginner</em> - No. Never or rarely.
+  </label>
+  <label class="radio">
+    <input type="radio" name="webdev" value="1">
+    <em>Intermediate</em> - Yes, but I didn't quite understand everything I was doing.
+  </label>
+  <label class="radio">
+    <input type="radio" name="webdev" value="1">
+    <em>Intermediate</em> - Yes, but I am out of practice.
+  </label>
+  <label class="radio">
+    <input type="radio" name="webdev" value="1">
+    <em>Experienced</em> - Many.
+  </label>
+
+
+</form>

@@ -24,10 +24,10 @@
       SET caption_id = "figure_" _ matches.0;
     END;
   -%]
-  <div class="diagram">
+  <div class="diagram pod_ignore">
     <ul class="thumbnails">
       <li class="span[% options.span_size || 3 %]">
-        <a class="thumbnail" href="[% options.src %]" title="[% options.alt || options.caption %]"><img src="[% options.src %]" alt="[% options.alt || options.caption %]" ></a>
+        <a class="thumbnail" href="[% options.src %]" title="[% options.alt || options.caption %]"><img src="[% options.src %]" alt="[% options.alt || options.caption %]"/></a>
       </li>
     </ul>
     [% IF options.caption %]

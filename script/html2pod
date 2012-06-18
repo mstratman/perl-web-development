@@ -1,0 +1,41 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+use Pod::HTML2Pod;
+use HTML::Zoom;
+use FindBin qw($Bin);
+use File::Spec;
+
+# Remove content that we don't want to appear in the POD.
+my $html = HTML::Zoom
+    ->new({ zconfig => { parser => 'HTML::Zoom::Parser::HTML::Parser' } })
+    ->from_file(
+        File::Spec->catfile($Bin, '..', 'index.html')
+    )
+        
+    # Strip out class="pod_ignore" content.
+    ->select('.pod_ignore')->replace_content('')
+
+    # Remove <aside> content.
+    ->select('aside')->replace_content('')
+
+    # Prevent image alt attributes from rendering.
+    ->select('img')->replace('')
+
+    ->to_html;
+
+
+print q{=head1 WARNING
+
+I<Note:> you are reading a version of this document
+which has many side-notes and diagrams removed, as well
+as having been clumsily reformatted.
+
+To view the original guide, please visit 
+L<http://mstratman.github.com/perl-web-development/|http://mstratman.github.com/perl-web-development/>
+
+};
+print Pod::HTML2Pod::convert(
+    content => $html,
+    a_href => 1,
+);

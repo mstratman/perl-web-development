@@ -37,5 +37,8 @@ L<http://mstratman.github.com/perl-web-development/|http://mstratman.github.com/
 };
 print Pod::HTML2Pod::convert(
     content => $html,
-    a_href => 1,
+
+    ## Local links don't yet work.
+    #a_href => 1,
+    #a_name => 1,
 );

@@ -1001,7 +1001,7 @@
          */
         var appendShareLink = function() {
             var id = $(this).attr('id');
-            $(this).append(' <a href="#' + id + '" title="Link to this section"><i class="icon icon-share"></i></a>');
+            $(this).append(' <a class="share" href="#' + id + '" title="Link to this section"><i class="icon icon-share"></i></a>');
         };
         $('h1[id]').each(appendShareLink);
         $('h2[id]').each(appendShareLink);

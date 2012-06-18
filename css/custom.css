@@ -25,6 +25,9 @@ h3 small, h2 small, h1 small {
     color: #737373;
 }
 
+h1 a.share, h2 a.share, h3 a.share { display:none; }
+h1:hover a.share, h2:hover a.share, h3:hover a.share { display:inline; }
+
 .help_link { cursor: help; }
 a.help_link {
     text-decoration:none;

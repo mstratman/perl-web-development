@@ -6,13 +6,13 @@ use HTML::Zoom;
 use FindBin qw($Bin);
 use File::Spec;
 
+my $infile = shift // File::Spec->catfile($Bin, '..', 'index.html');
+
 # Remove content that we don't want to appear in the POD.
 my $html = HTML::Zoom
     ->new({ zconfig => { parser => 'HTML::Zoom::Parser::HTML::Parser' } })
-    ->from_file(
-        File::Spec->catfile($Bin, '..', 'index.html')
-    )
-        
+    ->from_file($infile)
+
     # Strip out class="pod_ignore" content.
     ->select('.pod_ignore')->replace_content('')
 

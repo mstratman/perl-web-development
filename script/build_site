@@ -1,0 +1,30 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+use FindBin qw($Bin);
+use File::Spec;
+use Template;
+use autodie;
+
+my $config = {
+    ABSOLUTE     => 1,
+    INCLUDE_PATH => File::Spec->catfile($Bin, '..', 'templates'),
+};
+
+# By default, read templates/index.html and write index.html. Otherwise
+# read the given input file and print the output to STDOUT
+my $infile = shift;
+my $outfile;
+
+if (defined $infile) {
+    $outfile = \*STDOUT;
+    $config->{RELATIVE} = 1;
+
+} else {
+    $infile = File::Spec->catfile($Bin, '..', 'templates', 'index.html');
+    open $outfile, ">", File::Spec->catfile($Bin, '..', 'index.html');
+}
+
+my $tt = Template->new($config);
+$tt->process($infile, {}, $outfile) or die $tt->error;
+
